@@ -1,14 +1,21 @@
-var palabras = arrCodoACodo;
+var palabras;
+var palabraPensada;
+var palabraOculta;
 var imagen = document.getElementById("imagenAhorcado");
 var cuadroGris = document.getElementById("resultado");
 var intento = 1;
 
+pensarPalabra(arrSimpsons);
 capturarTeclas();
 
-var palabraPensada = obtenerPalabra();
-var palabraOculta = ocultar(palabraPensada);
+function pensarPalabra(fuente)
+{
+	palabras = fuente;
+	palabraPensada = obtenerPalabra();
+	palabraOculta = ocultar(palabraPensada);
 
-cuadroGris.innerText = palabraOculta;
+	cuadroGris.innerText = palabraOculta;
+}
 
 function ejecutar (letraDelUsuario)
 {	
@@ -84,7 +91,6 @@ function capturarTeclas(){
   	var nroTecla = evento.which;
   	if (nroTecla >= 65 && nroTecla <= 90) 
   	{
-    	console.log("e.e " + String.fromCharCode(evento.which));
     	ejecutar(String.fromCharCode(evento.which));
   	}
     evento.preventDefault();
